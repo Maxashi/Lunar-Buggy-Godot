@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://cxd1n1i3kv3nj"]
+
+[ext_resource type="Script" uid="uid://baxikb26wwc11" path="res://vehicle.gd" id="1_vehicle"]
+
+[sub_resource type="Environment" id="Environment_lunar"]
+background_mode = 1
+background_color = Color(0.035, 0.045, 0.07, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.45, 0.5, 0.65, 1)
+ambient_light_energy = 0.7
+tonemap_mode = 2
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ig7tw"]
+
+[sub_resource type="StandardMaterial3D" id="Material_ground"]
+albedo_color = Color(0.22, 0.2, 0.17, 1)
+albedo_texture = SubResource("PlaceholderTexture2D_ig7tw")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ground"]
+size = Vector3(120, 0.4, 120)
+
+[sub_resource type="BoxShape3D" id="BoxShape_ground"]
+size = Vector3(120, 0.4, 120)
+
+[sub_resource type="StandardMaterial3D" id="Material_chassis"]
+albedo_color = Color(0.82, 0.55, 0.16, 1)
+metallic = 0.25
+roughness = 0.65
+
+[sub_resource type="BoxMesh" id="BoxMesh_chassis"]
+size = Vector3(2.8, 0.55, 4.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape_chassis"]
+size = Vector3(2.8, 0.55, 4.2)
+
+[sub_resource type="StandardMaterial3D" id="Material_cabin"]
+albedo_color = Color(0.12, 0.19, 0.22, 1)
+metallic = 0.1
+roughness = 0.35
+
+[sub_resource type="BoxMesh" id="BoxMesh_cabin"]
+size = Vector3(2.1, 0.6, 1.8)
+
+[sub_resource type="StandardMaterial3D" id="Material_wheel"]
+albedo_color = Color(0.035, 0.04, 0.045, 1)
+roughness = 0.95
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wheel"]
+top_radius = 0.48
+bottom_radius = 0.48
+height = 0.34
+radial_segments = 16
+
+[node name="LunarBuggyTest" type="Node3D" unique_id=1433224695]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1620941336]
+environment = SubResource("Environment_lunar")
+
+[node name="MoonLight" type="DirectionalLight3D" parent="." unique_id=1813229747]
+transform = Transform3D(0.88294756, 0.36994863, -0.2890356, 0, 0.6156615, 0.7880107, 0.46947157, -0.6957722, 0.5435968, 0, 0, 0)
+light_color = Color(0.72, 0.82, 1, 1)
+light_energy = 1.4
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1842775082]
+
+[node name="Mesh" type="MeshInstance3D" parent="Ground" unique_id=1261734939]
+material_override = SubResource("Material_ground")
+mesh = SubResource("BoxMesh_ground")
+
+[node name="Collision" type="CollisionShape3D" parent="Ground" unique_id=823118193]
+shape = SubResource("BoxShape_ground")
+
+[node name="Buggy" type="VehicleBody3D" parent="." unique_id=45378979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+mass = 650.0
+script = ExtResource("1_vehicle")
+
+[node name="ChassisMesh" type="MeshInstance3D" parent="Buggy" unique_id=272726900]
+material_override = SubResource("Material_chassis")
+mesh = SubResource("BoxMesh_chassis")
+
+[node name="Collision" type="CollisionShape3D" parent="Buggy" unique_id=1784024159]
+shape = SubResource("BoxShape_chassis")
+
+[node name="Cabin" type="MeshInstance3D" parent="Buggy" unique_id=1286198410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.35)
+material_override = SubResource("Material_cabin")
+mesh = SubResource("BoxMesh_cabin")
+
+[node name="FrontLeftWheel" type="VehicleWheel3D" parent="Buggy" unique_id=1765416474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35, -0.35, 1.35)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.48
+suspension_travel = 0.35
+suspension_stiffness = 25.0
+damping_compression = 2.5
+damping_relaxation = 3.0
+
+[node name="Mesh" type="MeshInstance3D" parent="Buggy/FrontLeftWheel" unique_id=190921185]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("Material_wheel")
+mesh = SubResource("CylinderMesh_wheel")
+
+[node name="FrontRightWheel" type="VehicleWheel3D" parent="Buggy" unique_id=197504470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35, -0.35, 1.35)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.48
+suspension_travel = 0.35
+suspension_stiffness = 25.0
+damping_compression = 2.5
+damping_relaxation = 3.0
+
+[node name="Mesh" type="MeshInstance3D" parent="Buggy/FrontRightWheel" unique_id=1881655022]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("Material_wheel")
+mesh = SubResource("CylinderMesh_wheel")
+
+[node name="RearLeftWheel" type="VehicleWheel3D" parent="Buggy" unique_id=385285026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35, -0.35, -1.35)
+use_as_traction = true
+wheel_radius = 0.48
+suspension_travel = 0.35
+suspension_stiffness = 25.0
+damping_compression = 2.5
+damping_relaxation = 3.0
+
+[node name="Mesh" type="MeshInstance3D" parent="Buggy/RearLeftWheel" unique_id=16122059]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("Material_wheel")
+mesh = SubResource("CylinderMesh_wheel")
+
+[node name="RearRightWheel" type="VehicleWheel3D" parent="Buggy" unique_id=853040302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35, -0.35, -1.35)
+use_as_traction = true
+wheel_radius = 0.48
+suspension_travel = 0.35
+suspension_stiffness = 25.0
+damping_compression = 2.5
+damping_relaxation = 3.0
+
+[node name="Mesh" type="MeshInstance3D" parent="Buggy/RearRightWheel" unique_id=511701062]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("Material_wheel")
+mesh = SubResource("CylinderMesh_wheel")
+
+[node name="Camera3D" type="Camera3D" parent="Buggy" unique_id=520911099]
+transform = Transform3D(-1, 2.2626677e-08, -8.444391e-08, 0, 0.96592575, 0.258819, 8.742278e-08, 0.258819, -0.96592575, 0, 3.8, -7.5)
+current = true
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=2132277781]
+
+[node name="Instructions" type="Label" parent="HUD" unique_id=1571454873]
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 430.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0.9, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "W / Up: accelerate    S / Down: reverse
+Left / Right: steer    Space: brake"
