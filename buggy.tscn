@@ -1,15 +1,7 @@
-[gd_scene format=4 uid="uid://cxd1n1i3kv3nj"]
+[gd_scene format=4 uid="uid://dr0jl8gugnklg"]
 
-[ext_resource type="Script" uid="uid://baxikb26wwc11" path="res://vehicle.gd" id="1_vbjrk"]
-[ext_resource type="ArrayMesh" uid="uid://bnqwx3ivqgaa7" path="res://Meshes/Cheetah_01_chassis.glb" id="2_upar5"]
-
-[sub_resource type="Environment" id="Environment_lunar"]
-background_mode = 2
-background_color = Color(0.035, 0.045, 0.07, 1)
-ambient_light_source = 3
-ambient_light_color = Color(0.45, 0.5, 0.65, 1)
-ambient_light_energy = 2.5
-tonemap_mode = 2
+[ext_resource type="Script" uid="uid://baxikb26wwc11" path="res://vehicle.gd" id="1_no02x"]
+[ext_resource type="ArrayMesh" uid="uid://bnqwx3ivqgaa7" path="res://Meshes/Cheetah_01_chassis.glb" id="2_njpt1"]
 
 [sub_resource type="StandardMaterial3D" id="Material_wheel"]
 albedo_color = Color(0.035, 0.04, 0.045, 1)
@@ -19,7 +11,7 @@ roughness = 0.95
 albedo_color = Color(1, 0.63529414, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape_chassis"]
-size = Vector3(2.8, 0.55, 4.2)
+size = Vector3(2.8, 0.7979492, 4.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50455"]
 resource_name = "mat_tires"
@@ -89,34 +81,25 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j3nup")
 
-[node name="LunarBuggyTest" type="Node3D" unique_id=1433224695]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1620941336]
-environment = SubResource("Environment_lunar")
-
-[node name="MoonLight" type="DirectionalLight3D" parent="." unique_id=1813229747]
-transform = Transform3D(0.8829476, 0.36994866, -0.28903562, 0, 0.6156615, 0.7880108, 0.4694716, -0.6957722, 0.54359686, 0, 3.9859605, 0)
-light_color = Color(0.81249833, 0.81913584, 0.8017578, 1)
-light_energy = 5.114
-shadow_enabled = true
-
-[node name="Buggy" type="VehicleBody3D" parent="." unique_id=45378979]
+[node name="Buggy" type="VehicleBody3D" unique_id=1892686701]
 mass = 650.0
-script = ExtResource("1_vbjrk")
+script = ExtResource("1_no02x")
 drive_force = null
 reverse_force = null
 brake_force = null
 max_steering_angle = null
 
-[node name="Mesh" type="MeshInstance3D" parent="Buggy" unique_id=190921185]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=476170813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012139037, 0)
 material_override = SubResource("Material_wheel")
-mesh = ExtResource("2_upar5")
+mesh = ExtResource("2_njpt1")
 surface_material_override/0 = SubResource("StandardMaterial3D_wcfvd")
 
-[node name="Collision" type="CollisionShape3D" parent="Buggy" unique_id=1784024159]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=111814636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12397461, 0)
 shape = SubResource("BoxShape_chassis")
 
-[node name="RearLeftWheel" type="VehicleWheel3D" parent="Buggy" unique_id=385285026]
+[node name="RearLeftWheel" type="VehicleWheel3D" parent="." unique_id=883058956]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.45, -1.537)
 use_as_traction = true
 wheel_radius = 0.48
@@ -125,11 +108,11 @@ suspension_stiffness = 25.0
 damping_compression = 2.5
 damping_relaxation = 3.0
 
-[node name="wheel" type="MeshInstance3D" parent="Buggy/RearLeftWheel" unique_id=556126468]
+[node name="wheel" type="MeshInstance3D" parent="RearLeftWheel" unique_id=1477109639]
 transform = Transform3D(1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ac8p1")
 
-[node name="RearRightWheel" type="VehicleWheel3D" parent="Buggy" unique_id=853040302]
+[node name="RearRightWheel" type="VehicleWheel3D" parent="." unique_id=1172669718]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.45, -1.537)
 use_as_traction = true
 wheel_radius = 0.48
@@ -138,22 +121,32 @@ suspension_stiffness = 25.0
 damping_compression = 2.5
 damping_relaxation = 3.0
 
-[node name="wheel" type="MeshInstance3D" parent="Buggy/RearRightWheel" unique_id=1964909792]
+[node name="wheel" type="MeshInstance3D" parent="RearRightWheel" unique_id=641950884]
 transform = Transform3D(1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ac8p1")
 
-[node name="Camera3D" type="Camera3D" parent="Buggy" unique_id=520911099]
-transform = Transform3D(-1, 2.2626677e-08, -8.444391e-08, 0, 0.96592575, 0.258819, 8.742278e-08, 0.258819, -0.96592575, 0, 3.8, -7.5)
-current = true
+[node name="FrontLeftWheel" type="VehicleWheel3D" parent="." unique_id=1140773925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.45, -1.537)
+use_as_traction = true
+wheel_radius = 0.48
+suspension_travel = 0.35
+suspension_stiffness = 25.0
+damping_compression = 2.5
+damping_relaxation = 3.0
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=2132277781]
+[node name="wheel" type="MeshInstance3D" parent="FrontLeftWheel" unique_id=1980633675]
+transform = Transform3D(1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0)
+mesh = SubResource("ArrayMesh_ac8p1")
 
-[node name="Instructions" type="Label" parent="HUD" unique_id=1571454873]
-offset_left = 24.0
-offset_top = 22.0
-offset_right = 430.0
-offset_bottom = 78.0
-theme_override_colors/font_color = Color(0.9, 0.94, 1, 1)
-theme_override_font_sizes/font_size = 18
-text = "W / Up: accelerate    S / Down: reverse
-Left / Right: steer    Space: brake"
+[node name="FrontRightWeel" type="VehicleWheel3D" parent="." unique_id=1988192176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.45, -1.537)
+use_as_traction = true
+wheel_radius = 0.48
+suspension_travel = 0.35
+suspension_stiffness = 25.0
+damping_compression = 2.5
+damping_relaxation = 3.0
+
+[node name="wheel" type="MeshInstance3D" parent="FrontRightWeel" unique_id=621383595]
+transform = Transform3D(1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0)
+mesh = SubResource("ArrayMesh_ac8p1")
