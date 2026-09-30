@@ -1,4 +1,4 @@
-extends VehicleBody3D
+Textends VehicleBody3D
 
 @export var drive_force := 1600.0
 @export var reverse_force := 900.0
