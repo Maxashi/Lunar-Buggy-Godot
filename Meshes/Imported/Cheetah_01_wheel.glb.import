@@ -4,12 +4,12 @@ importer="ArrayMesh"
 importer_version=1
 type="ArrayMesh"
 uid="uid://c18t2ghfh2a63"
-path="res://.godot/imported/Cheetah_01_wheel.glb-8730e3f36353f7f129fa9b7afa070b73.res"
+path="res://.godot/imported/Cheetah_01_wheel.glb-86e7d2bdd3abc4f7222ddd51329d5ba4.res"
 
 [deps]
 
-source_file="res://Meshes/Cheetah_01_wheel.glb"
-dest_files=["res://.godot/imported/Cheetah_01_wheel.glb-8730e3f36353f7f129fa9b7afa070b73.res"]
+source_file="res://Meshes/Imported/Cheetah_01_wheel.glb"
+dest_files=["res://.godot/imported/Cheetah_01_wheel.glb-86e7d2bdd3abc4f7222ddd51329d5ba4.res"]
 
 [params]
 

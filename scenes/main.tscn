@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dr0jl8gugnklg" path="res://buggy.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dxq4p56omxx80" path="res://addons/lowpolyterrain/LowPolyTerrainManager.gd" id="2_0xm2m"]
+[ext_resource type="Script" path="res://scripts/follow_camera.gd" id="camera_script"]
 [ext_resource type="Shader" uid="uid://dq4udl5a5fk1e" path="res://addons/lowpolyterrain/shader/terrain_paint_overlay.gdshader" id="3_h2yge"]
 
 [sub_resource type="Sky" id="Sky_h2yge"]
@@ -371,6 +372,7 @@ max_steering_angle = 0.45
 [node name="Camera3D" type="Camera3D" parent="Buggy" unique_id=1426047141]
 transform = Transform3D(-1, 2.262668e-08, -8.444392e-08, 0, 0.9659259, 0.25881904, 8.742278e-08, 0.25881904, -0.9659259, 1.4804094, 2.971202, -7.5)
 current = true
+script = ExtResource("camera_script")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=2132277781]
 
