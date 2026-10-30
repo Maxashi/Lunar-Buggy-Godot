@@ -99,7 +99,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wcfvd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12397461, 0)
 shape = SubResource("BoxShape_chassis")
 
-[node name="RearLeftWheel" type="VehicleWheel3D" parent="." unique_id=883058956]
+[node name="rear_left_wheel" type="VehicleWheel3D" parent="." unique_id=883058956]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.45, -1.53)
 use_as_traction = true
 wheel_radius = 0.48
@@ -108,11 +108,11 @@ suspension_stiffness = 25.0
 damping_compression = 2.5
 damping_relaxation = 3.0
 
-[node name="wheel" type="MeshInstance3D" parent="RearLeftWheel" unique_id=1477109639]
-transform = Transform3D(1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0)
+[node name="wheel" type="MeshInstance3D" parent="rear_left_wheel" unique_id=1477109639]
+transform = Transform3D(-1.0603986, 0, -9.270299e-08, 0, 1.0603986, 0, 9.270299e-08, 0, -1.0603986, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ac8p1")
 
-[node name="RearRightWheel" type="VehicleWheel3D" parent="." unique_id=1172669718]
+[node name="rear_right_wheel" type="VehicleWheel3D" parent="." unique_id=1172669718]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.45, -1.53)
 use_as_traction = true
 wheel_radius = 0.48
@@ -121,11 +121,11 @@ suspension_stiffness = 25.0
 damping_compression = 2.5
 damping_relaxation = 3.0
 
-[node name="wheel" type="MeshInstance3D" parent="RearRightWheel" unique_id=641950884]
+[node name="wheel" type="MeshInstance3D" parent="rear_right_wheel" unique_id=641950884]
 transform = Transform3D(1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ac8p1")
 
-[node name="FrontLeftWheel" type="VehicleWheel3D" parent="." unique_id=1140773925]
+[node name="front_left_wheel" type="VehicleWheel3D" parent="." unique_id=1140773925]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.45, 1.65)
 use_as_traction = true
 wheel_radius = 0.48
@@ -134,11 +134,11 @@ suspension_stiffness = 25.0
 damping_compression = 2.5
 damping_relaxation = 3.0
 
-[node name="wheel" type="MeshInstance3D" parent="FrontLeftWheel" unique_id=1980633675]
-transform = Transform3D(1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0)
+[node name="wheel" type="MeshInstance3D" parent="front_left_wheel" unique_id=1980633675]
+transform = Transform3D(-1.0603986, 0, -9.270299e-08, 0, 1.0603986, 0, 9.270299e-08, 0, -1.0603986, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ac8p1")
 
-[node name="FrontRightWeel" type="VehicleWheel3D" parent="." unique_id=1988192176]
+[node name="front_right_wheel" type="VehicleWheel3D" parent="." unique_id=1988192176]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.45, 1.65)
 use_as_traction = true
 wheel_radius = 0.48
@@ -147,6 +147,6 @@ suspension_stiffness = 25.0
 damping_compression = 2.5
 damping_relaxation = 3.0
 
-[node name="wheel" type="MeshInstance3D" parent="FrontRightWeel" unique_id=621383595]
+[node name="wheel" type="MeshInstance3D" parent="front_right_wheel" unique_id=621383595]
 transform = Transform3D(1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0, 1.0603986, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ac8p1")

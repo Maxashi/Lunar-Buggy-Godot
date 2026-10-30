@@ -1,12 +1,12 @@
-Textends VehicleBody3D
+extends VehicleBody3D
 
 @export var drive_force := 1600.0
 @export var reverse_force := 900.0
 @export var brake_force := 35.0
 @export var max_steering_angle := 0.45
 
-@onready var front_left_wheel: VehicleWheel3D = $FrontLeftWheel
-@onready var front_right_wheel: VehicleWheel3D = $FrontRightWheel
+@onready var front_left_wheel: VehicleWheel3D = $front_left_wheel
+@onready var front_right_wheel: VehicleWheel3D = $front_right_wheel
 
 func _physics_process(_delta: float) -> void:
 	var throttle := 0.0
@@ -15,7 +15,11 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
 		throttle -= 1.0
 
-	var steering_input := Input.get_axis("ui_left", "ui_right")
+	var steering_input := 0.0
+	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
+		steering_input += 1.0
+	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
+		steering_input -= 1.0
 	front_left_wheel.steering = steering_input * max_steering_angle
 	front_right_wheel.steering = steering_input * max_steering_angle
 
